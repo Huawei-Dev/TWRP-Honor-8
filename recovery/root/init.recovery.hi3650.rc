@@ -1,0 +1,45 @@
+import init.hi3650.power.rc
+
+on early-init
+    start bbInstaller
+    wait /sbin/mount
+    start fstabSwitcher
+
+service bbInstaller /sbin/bbInstaller
+    class critical
+    user root
+    disabled
+    oneshot
+
+service fstabSwitcher /sbin/fstabSwitcher
+    class critical
+    user root
+    disabled
+    oneshot
+
+on property:sys.stock=1
+    start teecd
+    start volisnotd
+
+on init
+    mkdir /cust
+
+on boot
+    start recovery
+    chown system system /sys/devices/ff200000.hisi_usb/plugusb
+    chmod 0660 /sys/devices/ff200000.hisi_usb/plugusb
+
+service teecd /sbin/teecd
+    user root
+    group root
+    disabled
+
+service volisnotd /sbin/volisnotd -m
+    user root
+    group root
+    disabled
+
+service_redefine recovery /sbin/recovery
+    user root
+    group root
+    disabled
