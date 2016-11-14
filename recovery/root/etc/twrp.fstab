@@ -1,7 +1,7 @@
 /system           ext4       /dev/block/platform/hi_mci.0/by-name/system
 /cache            ext4       /dev/block/platform/hi_mci.0/by-name/cache			flags=display="Cache";backup=1;wipeingui
 /data             f2fs       /dev/block/platform/hi_mci.0/by-name/userdata		
-/cust             ext4       /dev/block/platform/hi_mci.0/by-name/cust			flags=display="Custom";storage;settingsstorage;backup=1;wipeingui
+/cust             ext4       /dev/block/platform/hi_mci.0/by-name/cust			flags=display="Custom";backup=1;wipeingui
 /oeminfo          emmc       /dev/block/platform/hi_mci.0/by-name/oeminfo		flags=display="OEMinfo";backup=1;flashimg=1
 /boot             emmc       /dev/block/platform/hi_mci.0/by-name/boot			
 /misc             emmc       /dev/block/platform/hi_mci.0/by-name/misc			flags=display="Misc";backup=1
